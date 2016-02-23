@@ -1,3 +1,49 @@
+/*
+ * jQuery v1.9.1 included
+ */
+
+$(document).ready(function() {
+
+  // social share popups
+  $(".share a").click(function(e) {
+    e.preventDefault();
+    window.open(this.href, "", "height = 500, width = 500");
+  });
+
+  // toggle the share dropdown in communities
+  $(".share-label").on("click", function(e) {
+    e.stopPropagation();
+    var isSelected = this.getAttribute("aria-selected") == "true";
+    this.setAttribute("aria-selected", !isSelected);
+    $(".share-label").not(this).attr("aria-selected", "false");
+  });
+
+  $(document).on("click", function() {
+    $(".share-label").attr("aria-selected", "false");
+  });
+
+  // show form controls when the textarea receives focus
+  $(".answer-body textarea").one("focus", function() {
+    $(".answer-form-controls").show();
+  });
+
+  $(".comment-container textarea").one("focus", function() {
+    $(".comment-form-controls").show();
+  });
+  
+  $("ul.article-list li a").each(function(i, e) {
+    var e = $(e);
+    var link = e.attr('href');
+    var path = window.location.pathname;
+    if (path.indexOf(link) > -1) {
+      e.parent().addClass('active');
+      // $('.sidebar-container').scrollTop(e.offset().top - 134);
+    }
+  });
+
+});
+
+
 <script src="https://zendesk.tv/conditional_fields/helpcenter.js"></script>
 <script>var cfaRules = [{"fieldType":"tagger","field":24337429,"value":"bug_report","select":[24395835],"formId":69129,"requireds":[]},{"fieldType":"tagger","field":24337429,"value":"other","select":[24395665],"formId":69129,"requireds":[]},{"fieldType":"tagger","field":24337469,"value":"fiber_cutter","select":[24337599,24395805],"formId":69129,"requireds":[]},{"fieldType":"tagger","field":24337469,"value":"fiber_extrusion","select":[24337599,24395655],"formId":69129,"requireds":[]},{"fieldType":"tagger","field":24337469,"value":"hardware_other","select":[24338329],"formId":69129,"requireds":[]},{"fieldType":"tagger","field":24337469,"value":"plastic_extrusion","select":[24395705,24395795],"formId":69129,"requireds":[]},{"fieldType":"tagger","field":24337479,"value":"fiber_jam","select":[24395645],"formId":69129,"requireds":[]},{"fieldType":"tagger","field":24337479,"value":"print_failure_other","select":[24338339],"formId":69129,"requireds":[]},{"fieldType":"tagger","field":24395205,"value":"firmware_issue","select":[24337399,24338299],"formId":69129,"requireds":[24337399,24338299]},{"fieldType":"tagger","field":24395205,"value":"hardware_issue","select":[24337469,24395135],"formId":69129,"requireds":[24337469]},{"fieldType":"tagger","field":24395205,"value":"print_failure_issue","select":[24337399,24337479],"formId":69129,"requireds":[24337399,24337479]},{"fieldType":"tagger","field":24395205,"value":"software_issue","select":[24337429],"formId":69129,"requireds":[24337429]},{"fieldType":"checkbox","field":24395705,"value":"yes","select":[24338489,24395785],"formId":69129,"requireds":[]},{"fieldType":"checkbox","field":24395835,"value":"yes","select":[24395845],"formId":69129,"requireds":[]}];</script>
 <header class="header">
